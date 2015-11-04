@@ -95,6 +95,20 @@ describe(moduleName, function() {
                     assert.deepEqual(rover.getPosition(), point(0,0));
                 });
             });
+            describe('given a planet with circumference of 2, moving forward 1 does not wrap', function() {
+                it(shouldReturn + '{x: 0, y: 1}', function() {
+                    rover = new Rover({planetCircumference: 2});
+                    rover.move('F');
+                    assert.deepEqual(rover.getPosition(), point(0,1));
+                });
+            });
+            describe('given a planet with circumference of 2, moving backward 1 does wrap', function() {
+                it(shouldReturn + '{x: 0, y: 1}', function() {
+                    rover = new Rover({planetCircumference: 2});
+                    rover.move('B');
+                    assert.deepEqual(rover.getPosition(), point(0,1));
+                });
+            });
         });
     });
 
