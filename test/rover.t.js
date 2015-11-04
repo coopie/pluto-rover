@@ -74,14 +74,24 @@ describe(moduleName, function() {
         });
 
         describe('wrapping movement', function() {
-            beforeEach(function() {
-                rover = new Rover({
-                    planetCircumference: 1
-                });
-            });
             describe('given a planet with circumference of 1, wraps around itself', function() {
                 it(shouldReturn + '{x: 0, y: 0}', function() {
+                    rover = new Rover({planetCircumference: 1});
                     rover.move('F');
+                    assert.deepEqual(rover.getPosition(), point(0,0));
+                });
+            });
+            describe('given a planet with circumference of 1, wraps around itself, turning right', function() {
+                it(shouldReturn + '{x: 0, y: 0}', function() {
+                    rover = new Rover({planetCircumference: 1});
+                    rover.move('RF');
+                    assert.deepEqual(rover.getPosition(), point(0,0));
+                });
+            });
+            describe('given a planet with circumference of 1, wraps around itself, turning left', function() {
+                it(shouldReturn + '{x: 0, y: 0}', function() {
+                    rover = new Rover({planetCircumference: 1});
+                    rover.move('LF');
                     assert.deepEqual(rover.getPosition(), point(0,0));
                 });
             });
