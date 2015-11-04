@@ -6,10 +6,15 @@ function point(x, y) {
     };
 }
 
-function Rover() {
+function Rover(args) {
     this.x = 0;
     this.y = 0;
     this.direction = 0;
+    if (args) {
+        this.planetCircumference = args.planetCircumference;
+    } else {
+        this.planetCircumference = 7232000; // the real circumference of Pluto
+    }
 }
 
 Rover.prototype.move = function(instructions) {
@@ -20,7 +25,7 @@ Rover.prototype.move = function(instructions) {
                 this.moveForward();
                 break;
             case 'B':
-                this.y -= 1;
+                this.moveBackward();
                 break;
             case 'R':
                 this.direction = (this.direction + 1) % 4;
@@ -48,13 +53,20 @@ Rover.prototype.getDirection = function() {
     };
 };
 
+Rover.prototype.moveBackward = function() {
+    this.move('RR');
+    this.moveForward();
+    this.move('LL');
+};
+
 Rover.prototype.moveForward = function() {
+    var circimference = this.planetCircumference;
     switch (this.direction) {
         case 0:
-            this.y += 1;
+            this.y = (this.y + 1) % circimference;
             break;
         case 1:
-            this.x += 1;
+            this.x = (this.x + 1) % circimference;
             break;
         case 2:
             this.y -= 1;
