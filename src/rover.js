@@ -23,7 +23,10 @@ Rover.prototype.move = function(instructions) {
                 this.y -= 1;
                 break;
             case 'R':
-                this.direction += 1 % 4;
+                this.direction += (this.direction + 1) % 4;
+                break;
+            case 'L':
+                this.direction = (this.direction - 1 + 4) % 4;
             default:
 
         }

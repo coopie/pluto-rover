@@ -39,6 +39,12 @@ describe(moduleName, function() {
                 assert.deepEqual(rover.getPosition(), point(1,0));
             });
         });
+        describe('Turn left and move forward', function() {
+            it(shouldReturn + '{x: 1, y: 0}', function() {
+                rover.move('LF');
+                assert.deepEqual(rover.getPosition(), point(-1,0));
+            });
+        });
     });
 
 });
