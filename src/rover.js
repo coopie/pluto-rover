@@ -60,19 +60,39 @@ Rover.prototype.moveBackward = function() {
 };
 
 Rover.prototype.moveForward = function() {
-    var circimference = this.planetCircumference;
+    var circumference = this.planetCircumference;
+    var xMax = Math.floor(circumference / 2);
+    var yMax = Math.floor(circumference / 2);
+    var xMin = Math.floor((circumference - 1) / 2) || 0;
+    var yMin = Math.floor((circumference - 1) / 2) || 0;
     switch (this.direction) {
         case 0:
-            this.y = (this.y + 1) % circimference;
+            if (this.y === yMax) {
+                this.y = yMin;
+            } else {
+                this.y += 1;
+            }
             break;
         case 1:
-            this.x = (this.x + 1) % circimference;
+            if (this.x === xMax) {
+                this.x = xMin;
+            } else {
+                this.x += 1;
+            }
             break;
         case 2:
-            this.y -= 1;
+            if (this.y === yMin) {
+                this.y = yMax;
+            } else {
+                this.y -= 1;
+            }
             break;
         case 3:
-            this.x -= 1;
+            if (this.x === xMin) {
+                this.x = xMax;
+            } else {
+                this.x -= 1;
+            }
             break;
     }
 };
