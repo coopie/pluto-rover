@@ -1,0 +1,23 @@
+{
+  "name": "pluto-rover",
+  "version": "1.0.0",
+  "description": "A programming challenge about making a rover move",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "istanbul cover node_modules/.bin/_mocha -- -- test/*.t.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coopie/pluto-rover.git"
+  },
+  "author": "Sam Coope",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coopie/pluto-rover/issues"
+  },
+  "homepage": "https://github.com/coopie/pluto-rover#readme",
+  "dependencies": {
+    "istanbul": "^0.4.0",
+    "mocha": "^2.3.3"
+  }
+}
