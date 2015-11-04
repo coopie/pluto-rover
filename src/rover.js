@@ -11,15 +11,24 @@ function Rover(args) {
     this.y = 0;
     this.direction = 0;
     if (args) {
-        this.planetCircumference = args.planetCircumference;
+        this.planetCircumference = args.planetCircumference || 7232000;
+        this.obstacles = args.obstacles || [];
     } else {
         this.planetCircumference = 7232000; // the real circumference of Pluto
+        this.obstacles = [];
     }
 }
 
 Rover.prototype.move = function(instructions) {
     instructions = instructions.split('');
+    var obstacleEncountered = false;
     instructions.forEach(function(instruction) {
+        if (obstacleEncountered) {
+            console.log('returning');
+            return;
+        }
+        var oldX = this.x;
+        var oldY = this.y;
         switch (instruction) {
             case 'F':
                 this.moveForward();
@@ -33,6 +42,16 @@ Rover.prototype.move = function(instructions) {
             case 'L':
                 this.direction = (this.direction - 1 + 4) % 4;
         }
+        obstacleEncountered = this.obstacles.some(function(obstacle) {
+            return obstacle.x === this.x &&
+                obstacle.y === this.y;
+        }.bind(this));
+        if (obstacleEncountered) {
+            console.log('encountered');
+            this.x = oldX;
+            this.y = oldY;
+        }
+        console.log(obstacleEncountered);
     }.bind(this));
 };
 

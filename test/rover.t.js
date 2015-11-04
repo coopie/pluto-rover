@@ -110,6 +110,17 @@ describe(moduleName, function() {
                 });
             });
         });
-    });
+        describe('Obstacle Detection', function() {
+            describe('an Obstacle in 0,1 stops the rover', function() {
+                it(shouldReturn + '{x: 0, y: 0}', function() {
+                    rover = new Rover({
+                        obstacles: [point(0,1)]
+                    });
+                    rover.move('F');
+                    assert.deepEqual(rover.getPosition(), point(0,0));
+                });
+            });
+        });
 
+    });
 });
