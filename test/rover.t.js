@@ -40,9 +40,27 @@ describe(moduleName, function() {
             });
         });
         describe('Turn left and move forward', function() {
-            it(shouldReturn + '{x: 1, y: 0}', function() {
+            it(shouldReturn + '{x: -1, y: 0}', function() {
                 rover.move('LF');
                 assert.deepEqual(rover.getPosition(), point(-1,0));
+            });
+        });
+        describe('RRRRF is same as F', function() {
+            it(shouldReturn + '{x: 0, y: 1}', function() {
+                rover.move('RRRRF');
+                assert.deepEqual(rover.getPosition(), point(0,1));
+            });
+        });
+        describe('LLLLLF is same as RF', function() {
+            it(shouldReturn + '{x: -1, y: 0}', function() {
+                rover.move('LLLLLF');
+                assert.deepEqual(rover.getPosition(), point(-1,0));
+            });
+        });
+        describe('"FFRFF" would put the rover at 2,2 facing East.', function() {
+            it(shouldReturn + '{x: 2, y: 2}', function() {
+                rover.move('FFRFF');
+                assert.deepEqual(rover.getPosition(), point(2,2));
             });
         });
     });

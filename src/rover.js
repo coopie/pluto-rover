@@ -23,18 +23,29 @@ Rover.prototype.move = function(instructions) {
                 this.y -= 1;
                 break;
             case 'R':
-                this.direction += (this.direction + 1) % 4;
+                this.direction = (this.direction + 1) % 4;
                 break;
             case 'L':
                 this.direction = (this.direction - 1 + 4) % 4;
-            default:
-
         }
     }.bind(this));
 };
 
 Rover.prototype.getPosition = function() {
     return point(this.x, this.y);
+};
+
+Rover.prototype.getDirection = function() {
+    switch (this.direction) {
+        case 0:
+            return 'N';
+        case 1:
+            return 'E';
+        case 2:
+            return 'S';
+        case 3:
+            return 'W';
+    };
 };
 
 Rover.prototype.moveForward = function() {
@@ -51,7 +62,6 @@ Rover.prototype.moveForward = function() {
         case 3:
             this.x -= 1;
             break;
-        default:
     }
 };
 
