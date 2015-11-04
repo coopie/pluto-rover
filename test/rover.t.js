@@ -28,9 +28,15 @@ describe(moduleName, function() {
             });
         });
         describe('One forward one back', function() {
-            it(shouldReturn + '{x: 0, y: -1}', function() {
+            it(shouldReturn + '{x: 0, y: 0}', function() {
                 rover.move('FB');
                 assert.deepEqual(rover.getPosition(), point(0,0));
+            });
+        });
+        describe('Turn right and move forward', function() {
+            it(shouldReturn + '{x: 1, y: 0}', function() {
+                rover.move('RF');
+                assert.deepEqual(rover.getPosition(), point(1,0));
             });
         });
     });
