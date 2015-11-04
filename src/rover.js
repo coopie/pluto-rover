@@ -12,7 +12,17 @@ function Rover() {
 }
 
 Rover.prototype.move = function (instructions) {
-    this.y = 1;
+    switch (instructions) {
+        case 'F':
+            this.y += 1;
+            console.log('sdasdasd');
+            break;
+        case 'B':
+            this.y -= 1;
+            break;
+        default:
+
+    }
 };
 
 Rover.prototype.getPosition = function () {
