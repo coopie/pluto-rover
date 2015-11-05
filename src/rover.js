@@ -1,4 +1,4 @@
-
+// A cleaner way of writing a point, instead of {x: x, y: y} every time
 function point(x, y) {
     return {
         x: x,
@@ -6,6 +6,9 @@ function point(x, y) {
     };
 }
 
+// args:
+// planetCircumference: the circumference for the rover to travel around
+// obstacles: A list of points relating to obstacles on the planet
 function Rover(args) {
     this.x = 0;
     this.y = 0;
@@ -19,6 +22,7 @@ function Rover(args) {
     }
 }
 
+// moves the rover as per the spec
 Rover.prototype.move = function(instructions) {
     instructions = instructions.split('');
     var obstacleEncountered = false;
@@ -47,7 +51,6 @@ Rover.prototype.move = function(instructions) {
                 obstacle.y === this.y;
         }.bind(this));
         if (obstacleEncountered) {
-            console.log('encountered');
             this.x = oldX;
             this.y = oldY;
         }
