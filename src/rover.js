@@ -28,7 +28,6 @@ Rover.prototype.move = function(instructions) {
     var obstacleEncountered = false;
     instructions.forEach(function(instruction) {
         if (obstacleEncountered) {
-            console.log('returning');
             return;
         }
         var oldX = this.x;
